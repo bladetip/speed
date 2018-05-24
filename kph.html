@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Wind Turbine Blade Tip Speed Calculator</h2>
+
+<form name="speedform" action="" method="get">
+	Please input the blade length or radius (diameter divided by 2). <br><br>
+  <input type="text" name="bladeLength" value="50" size = "1"> metres<br><br>
+  <input type="text" name="revs" value="16" size = "1"> revolutions per minute<br><br>
+  <input type="button" value="Calculate km/h" onclick="speed(this.form)">
+</form>
+<p>The tip of the blade travels</p>
+<h1 id="demo"></h1> km per hour at
+<p style="display:inline" id="revs"></p> revolutions per minute.<br><br>
+<ul>
+	<li><p style="display:inline" id="area"></p> square metres is the area swept by the blades.</li>
+	<li><p style="display:inline" id="circ"></p> metres is the distance travelled (circumference).</li>
+	<li><p style="display:inline" id="diam"></p> metres is the diameter.</li>
+</ul>
+<script language = "javascript" >
+ function speed (form) {
+	var pi = Math.PI
+	var rad = form.bladeLength.value
+	var diam = 2 * rad
+	var dia = diam.toFixed(1);
+	var circ = pi * diam
+	var crc = circ.toFixed(1);
+	var rpm = form.revs.value
+	var speed = circ * rpm * 60 / 1000;
+	var spd = speed.toFixed(1);
+	var wsa = pi * Math.pow(rad, 2);
+	var sa = wsa.toFixed(1);
+	document.getElementById("demo").innerHTML = spd;
+	document.getElementById("revs").innerHTML = rpm;
+	document.getElementById("area").innerHTML = sa;
+	document.getElementById("circ").innerHTML = crc;
+	document.getElementById("diam").innerHTML = dia;
+	}
+</script>
+
+</body>
+</html>
